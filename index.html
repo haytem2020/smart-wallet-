@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<script>
+  if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>الميزانية الذكية - لوحة التحكم</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "rgba(var(--color-primary-container), <alpha-value>)",
+                    "surface-container-low": "rgba(var(--color-surface-container-low), <alpha-value>)",
+                    "primary-fixed": "rgba(var(--color-primary-fixed), <alpha-value>)",
+                    "tertiary-fixed-dim": "rgba(var(--color-tertiary-fixed-dim), <alpha-value>)",
+                    "outline": "rgba(var(--color-outline), <alpha-value>)",
+                    "secondary": "rgba(var(--color-secondary), <alpha-value>)",
+                    "on-error-container": "rgba(var(--color-on-error-container), <alpha-value>)",
+                    "tertiary-fixed": "rgba(var(--color-tertiary-fixed), <alpha-value>)",
+                    "surface-container-high": "rgba(var(--color-surface-container-high), <alpha-value>)",
+                    "inverse-on-surface": "rgba(var(--color-inverse-on-surface), <alpha-value>)",
+                    "secondary-fixed": "rgba(var(--color-secondary-fixed), <alpha-value>)",
+                    "on-background": "rgba(var(--color-on-background), <alpha-value>)",
+                    "secondary-container": "rgba(var(--color-secondary-container), <alpha-value>)",
+                    "on-primary": "rgba(var(--color-on-primary), <alpha-value>)",
+                    "inverse-primary": "rgba(var(--color-inverse-primary), <alpha-value>)",
+                    "on-error": "rgba(var(--color-on-error), <alpha-value>)",
+                    "surface-dim": "rgba(var(--color-surface-dim), <alpha-value>)",
+                    "on-tertiary": "rgba(var(--color-on-tertiary), <alpha-value>)",
+                    "surface-container": "rgba(var(--color-surface-container), <alpha-value>)",
+                    "outline-variant": "rgba(var(--color-outline-variant), <alpha-value>)",
+                    "error-container": "rgba(var(--color-error-container), <alpha-value>)",
+                    "inverse-surface": "rgba(var(--color-inverse-surface), <alpha-value>)",
+                    "surface-container-lowest": "rgba(var(--color-surface-container-lowest), <alpha-value>)",
+                    "surface-tint": "rgba(var(--color-surface-tint), <alpha-value>)",
+                    "on-primary-fixed-variant": "rgba(var(--color-on-primary-fixed-variant), <alpha-value>)",
+                    "tertiary": "rgba(var(--color-tertiary), <alpha-value>)",
+                    "on-tertiary-container": "rgba(var(--color-on-tertiary-container), <alpha-value>)",
+                    "on-surface-variant": "rgba(var(--color-on-surface-variant), <alpha-value>)",
+                    "on-tertiary-fixed-variant": "rgba(var(--color-on-tertiary-fixed-variant), <alpha-value>)",
+                    "surface": "rgba(var(--color-surface), <alpha-value>)",
+                    "on-tertiary-fixed": "rgba(var(--color-on-tertiary-fixed), <alpha-value>)",
+                    "on-surface": "rgba(var(--color-on-surface), <alpha-value>)",
+                    "background": "rgba(var(--color-background), <alpha-value>)",
+                    "on-secondary-fixed": "rgba(var(--color-on-secondary-fixed), <alpha-value>)",
+                    "on-primary-container": "rgba(var(--color-on-primary-container), <alpha-value>)",
+                    "on-primary-fixed": "rgba(var(--color-on-primary-fixed), <alpha-value>)",
+                    "primary": "rgba(var(--color-primary), <alpha-value>)",
+                    "tertiary-container": "rgba(var(--color-tertiary-container), <alpha-value>)",
+                    "on-secondary": "rgba(var(--color-on-secondary), <alpha-value>)",
+                    "secondary-fixed-dim": "rgba(var(--color-secondary-fixed-dim), <alpha-value>)",
+                    "surface-bright": "rgba(var(--color-surface-bright), <alpha-value>)",
+                    "surface-variant": "rgba(var(--color-surface-variant), <alpha-value>)",
+                    "on-secondary-container": "rgba(var(--color-on-secondary-container), <alpha-value>)",
+                    "on-secondary-fixed-variant": "rgba(var(--color-on-secondary-fixed-variant), <alpha-value>)",
+                    "surface-container-highest": "rgba(var(--color-surface-container-highest), <alpha-value>)",
+                    "primary-fixed-dim": "rgba(var(--color-primary-fixed-dim), <alpha-value>)",
+                    "error": "rgba(var(--color-error), <alpha-value>)"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "1.5rem",
+                    "lg": "2rem",
+                    "gutter": "16px",
+                    "base": "4px",
+                    "xs": "0.5rem",
+                    "margin-mobile": "20px",
+                    "sm": "1rem",
+                    "xl": "3rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["IBM Plex Sans Arabic"],
+                    "label-md": ["IBM Plex Sans Arabic"],
+                    "label-sm": ["IBM Plex Sans Arabic"],
+                    "headline-md": ["IBM Plex Sans Arabic"],
+                    "body-md": ["IBM Plex Sans Arabic"],
+                    "headline-lg-mobile": ["IBM Plex Sans Arabic"],
+                    "headline-sm": ["IBM Plex Sans Arabic"],
+                    "display-lg": ["IBM Plex Sans Arabic"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "44px", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+      :root {
+        --color-primary-container: 0, 131, 120;
+        --color-surface-container-low: 240, 243, 255;
+        --color-primary-fixed: 137, 245, 231;
+        --color-tertiary-fixed-dim: 60, 221, 199;
+        --color-outline: 109, 122, 119;
+        --color-secondary: 85, 97, 95;
+        --color-on-error-container: 147, 0, 10;
+        --color-tertiary-fixed: 98, 250, 227;
+        --color-surface-container-high: 222, 232, 255;
+        --color-inverse-on-surface: 236, 241, 255;
+        --color-secondary-fixed: 216, 229, 226;
+        --color-on-background: 17, 28, 45;
+        --color-secondary-container: 216, 229, 226;
+        --color-on-primary: 255, 255, 255;
+        --color-inverse-primary: 107, 216, 203;
+        --color-on-error: 255, 255, 255;
+        --color-surface-dim: 207, 218, 242;
+        --color-on-tertiary: 255, 255, 255;
+        --color-surface-container: 231, 238, 255;
+        --color-outline-variant: 188, 201, 198;
+        --color-error-container: 255, 218, 214;
+        --color-inverse-surface: 38, 49, 67;
+        --color-surface-container-lowest: 255, 255, 255;
+        --color-surface-tint: 0, 106, 97;
+        --color-on-primary-fixed-variant: 0, 80, 73;
+        --color-tertiary: 0, 104, 92;
+        --color-on-tertiary-container: 244, 255, 251;
+        --color-on-surface-variant: 61, 73, 71;
+        --color-on-tertiary-fixed-variant: 0, 80, 71;
+        --color-surface: 249, 249, 255;
+        --color-on-tertiary-fixed: 0, 32, 28;
+        --color-on-surface: 17, 28, 45;
+        --color-background: 249, 249, 255;
+        --color-on-secondary-fixed: 18, 30, 28;
+        --color-on-primary-container: 244, 255, 252;
+        --color-on-primary-fixed: 0, 32, 29;
+        --color-primary: 0, 104, 95;
+        --color-tertiary-container: 0, 131, 117;
+        --color-on-secondary: 255, 255, 255;
+        --color-secondary-fixed-dim: 188, 201, 198;
+        --color-surface-bright: 249, 249, 255;
+        --color-surface-variant: 216, 227, 251;
+        --color-on-secondary-container: 91, 103, 101;
+        --color-on-secondary-fixed-variant: 61, 73, 71;
+        --color-surface-container-highest: 216, 227, 251;
+        --color-primary-fixed-dim: 107, 216, 203;
+        --color-error: 186, 26, 26;
+        
+        --shadow-color: rgba(0, 131, 120, 0.12);
+        --shadow-hover-color: rgba(0, 131, 120, 0.2);
+        --card-border: rgba(226, 232, 240, 1);
+      }
+
+      .dark {
+        --color-primary-container: 0, 80, 73;
+        --color-surface-container-low: 21, 32, 51;
+        --color-primary-fixed: 0, 80, 73;
+        --color-tertiary-fixed-dim: 0, 80, 71;
+        --color-outline: 137, 147, 145;
+        --color-secondary: 167, 181, 178;
+        --color-on-error-container: 255, 218, 214;
+        --color-tertiary-fixed: 0, 80, 71;
+        --color-surface-container-high: 32, 45, 66;
+        --color-inverse-on-surface: 17, 28, 45;
+        --color-secondary-fixed: 45, 56, 54;
+        --color-on-background: 226, 232, 240;
+        --color-secondary-container: 34, 46, 43;
+        --color-on-primary: 0, 32, 29;
+        --color-inverse-primary: 0, 106, 97;
+        --color-on-error: 105, 0, 5;
+        --color-surface-dim: 12, 19, 34;
+        --color-on-tertiary: 0, 32, 28;
+        --color-surface-container: 27, 38, 56;
+        --color-outline-variant: 63, 73, 71;
+        --color-error-container: 147, 0, 10;
+        --color-inverse-surface: 226, 232, 240;
+        --color-surface-container-lowest: 13, 21, 39;
+        --color-surface-tint: 107, 216, 203;
+        --color-on-primary-fixed-variant: 137, 245, 231;
+        --color-tertiary: 60, 221, 199;
+        --color-on-tertiary-container: 128, 249, 232;
+        --color-on-surface-variant: 163, 178, 175;
+        --color-on-tertiary-fixed-variant: 98, 250, 227;
+        --color-surface: 17, 28, 45;
+        --color-on-tertiary-fixed: 98, 250, 227;
+        --color-on-surface: 226, 232, 240;
+        --color-background: 9, 15, 29;
+        --color-on-secondary-fixed: 216, 229, 226;
+        --color-on-primary-container: 137, 245, 231;
+        --color-on-primary-fixed: 137, 245, 231;
+        --color-primary: 107, 216, 203;
+        --color-tertiary-container: 0, 80, 71;
+        --color-on-secondary: 39, 51, 49;
+        --color-secondary-fixed-dim: 85, 97, 95;
+        --color-surface-bright: 28, 39, 56;
+        --color-surface-variant: 37, 51, 74;
+        --color-on-secondary-container: 188, 201, 198;
+        --color-on-secondary-fixed-variant: 188, 201, 198;
+        --color-surface-container-highest: 43, 58, 84;
+        --color-primary-fixed-dim: 0, 106, 97;
+        --color-error: 255, 180, 171;
+        
+        --shadow-color: rgba(0, 0, 0, 0.4);
+        --shadow-hover-color: rgba(0, 0, 0, 0.6);
+        --card-border: rgba(63, 73, 71, 0.4);
+      }
+
+      body {
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
+        background-color: rgba(var(--color-background), 1);
+      }
+      
+      body, nav, main, div, section, p, h1, h2, h3, h4, span, button, input, select, form {
+        transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .expense-card {
+        border: 1px solid var(--card-border);
+        box-shadow: 0 4px 6px -1px var(--shadow-color);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .expense-card:hover, .expense-card:active {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 10px 15px -3px var(--shadow-hover-color);
+      }
+      
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #00837840;
+        border-radius: 10px;
+      }
+
+      /* Entrance Animations */
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        opacity: 0;
+      }
+
+      /* Pulse Animation for FAB */
+      @keyframes pulse-soft {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 131, 120, 0.4); }
+        50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 131, 120, 0); }
+      }
+      .animate-pulse-fab {
+        animation: pulse-soft 2s infinite;
+      }
+
+      /* Progress Bar Animation */
+      @keyframes growX {
+        from { transform: scaleX(0); }
+        to { transform: scaleX(1); }
+      }
+      .progress-fill {
+        transform-origin: right;
+        animation: growX 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      }
+
+      /* Nav Glow */
+      .nav-active-glow {
+        box-shadow: 0 0 15px 2px rgba(0, 131, 120, 0.3);
+      }
+
+      /* Loading Spinner */
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      .loading-spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(var(--color-primary-container), 0.3);
+        border-top-color: rgba(var(--color-primary-container), 1);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      /* Health Score Ring */
+      .score-ring {
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, ::before, ::after {
+          animation-delay: -1ms !important;
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          background-attachment: initial !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0s !important;
+          transition-delay: 0s !important;
+        }
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-on-surface antialiased pb-10">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm flex items-center justify-between px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-3">
+<div class="relative group cursor-pointer" onclick="document.getElementById('profile-upload').click()">
+    <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center overflow-hidden border border-primary-container/20 transition-transform hover:rotate-6">
+        <img id="profile-img" alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuWpVMHxlCbE5rLeL55xevoHmgSzBeJhuAL6gX8Bxuf4-QtyhSXPHwhmGSSAZhmIMuYOXxO7HwC3O4hlSepxrtm0trPOMuc3BnhU07dZ2QKppl9u7FBpQnwCSdRUsg6ftcb1RpdF6r4gDnwM7jLyrX41qArcDTA6sglspKdtT2SUKDq2gVlf8au-Ea3oiUsCOh1v6x57wNMGQUAD2P7h5Htai9EC6pH7NlRDaav4y0OgA3yw4XFPXXGxtVN7luhZYuExLUA07DpvI"/>
+        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-full">
+            <span class="material-symbols-outlined text-white text-[16px]">edit</span>
+        </div>
+    </div>
+    <input type="file" id="profile-upload" class="hidden" accept="image/*">
+</div>
+<h1 class="font-headline-sm text-headline-sm-mobile md:text-headline-sm text-primary">الميزانية الذكية</h1>
+</div>
+<div class="flex items-center gap-2">
+  <!-- Theme Toggle Button -->
+  <button id="theme-toggle" class="p-2 rounded-full hover:bg-primary-container/10 transition-all active:scale-90 duration-200" title="تغيير المظهر">
+    <span id="theme-toggle-icon" class="material-symbols-outlined text-primary">dark_mode</span>
+  </button>
+  
+  <!-- Notifications Wrapper -->
+  <div class="relative">
+    <button id="notifications-btn" class="p-2 rounded-full hover:bg-primary-container/10 transition-all active:scale-90 duration-200 relative" title="الإشعارات">
+      <span class="material-symbols-outlined text-primary">notifications</span>
+      <!-- Notification Badge -->
+      <span id="notification-badge" class="absolute top-1.5 left-1.5 w-2 h-2 bg-error rounded-full hidden animate-pulse"></span>
+    </button>
+
+    <!-- Notifications Dropdown -->
+    <div id="notifications-dropdown" class="hidden absolute left-0 mt-2 w-80 bg-surface-container-lowest/95 backdrop-blur-md border border-outline-variant/30 rounded-2xl shadow-xl z-50 overflow-hidden transition-all duration-300">
+      <div class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-primary-container/5">
+        <h3 class="font-headline-sm text-[16px] text-primary font-semibold">الإشعارات</h3>
+        <button id="clear-notifications" class="text-[12px] text-error hover:underline transition-all font-medium">مسح الكل</button>
+      </div>
+      <div id="notifications-list-container" class="max-h-80 overflow-y-auto divide-y divide-outline-variant/10">
+        <!-- Dynamic notifications will be injected here -->
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+<main class="mt-20 px-margin-mobile max-w-5xl mx-auto space-y-8">
+
+<!-- ==================== HOME VIEW ==================== -->
+<div id="view-home" class="space-y-8 pb-8">
+<!-- Financial Summary Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Total Balance Card -->
+<div class="animate-fade-in-up expense-card bg-primary-container p-6 rounded-xl text-on-primary-container flex flex-col justify-between overflow-hidden relative group" style="animation-delay: 0.1s;">
+<div class="relative z-10">
+<p class="font-label-md text-label-md opacity-90">إجمالي الرصيد</p>
+<h2 id="total-balance" class="font-display-lg text-display-lg mt-2">جاري التحميل...</h2>
+</div>
+<div class="mt-6 flex items-center gap-2 relative z-10">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="font-label-sm text-label-sm" id="balance-trend">---</span>
+</div>
+<div class="absolute -bottom-4 -left-4 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+</div>
+<!-- Total Income Card -->
+<div class="animate-fade-in-up expense-card bg-surface-container-lowest p-6 rounded-xl flex flex-col justify-between border-r-4 border-r-primary-container" style="animation-delay: 0.2s;">
+<div>
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-surface-variant">إجمالي الدخل</p>
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">arrow_downward</span>
+</div>
+<h3 id="total-income" class="font-headline-md text-headline-md text-primary mt-2">---</h3>
+</div>
+<div class="mt-4 h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div id="income-bar" class="progress-fill h-full bg-primary-container rounded-full" style="width: 0%"></div>
+</div>
+</div>
+<!-- Total Expenses Card -->
+<div class="animate-fade-in-up expense-card bg-surface-container-lowest p-6 rounded-xl flex flex-col justify-between border-r-4 border-r-error" style="animation-delay: 0.3s;">
+<div>
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-surface-variant">إجمالي المصاريف</p>
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">arrow_upward</span>
+</div>
+<h3 id="total-expense" class="font-headline-md text-headline-md text-on-surface mt-2">---</h3>
+</div>
+<div class="mt-4 h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div id="expense-bar" class="progress-fill h-full bg-error rounded-full" style="width: 0%"></div>
+</div>
+</div>
+</section>
+
+<!-- Recent Transactions & Add Form Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Recent Transactions Section -->
+<section class="lg:col-span-7 space-y-4">
+<div class="flex justify-between items-center px-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">آخر المعاملات</h3>
+<button onclick="switchView('view-transactions')" class="text-primary font-label-md text-label-md hover:underline transition-all active:scale-95">عرض الكل</button>
+</div>
+<div id="transactions-list" class="space-y-3">
+  <div class="flex items-center justify-center py-8">
+    <div class="loading-spinner"></div>
+  </div>
+</div>
+</section>
+<!-- Add Transaction Form Section -->
+<section class="lg:col-span-5 sticky top-24">
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-lg animate-fade-in-up" style="animation-delay: 0.8s;">
+<div class="mb-6">
+<h3 class="font-headline-sm text-headline-sm text-primary">إضافة عملية جديدة</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">سجل مصاريفك أو دخلك الجديد هنا</p>
+</div>
+<form id="transaction-form" class="space-y-6">
+<!-- Amount Input -->
+<div class="group space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mr-1 transition-colors group-focus-within:text-primary">المبلغ</label>
+<div class="relative transition-transform duration-300 focus-within:scale-[1.02]">
+<input id="amount-input" class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-4 py-3 text-headline-sm font-headline-sm focus:ring-4 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all pr-12" placeholder="0.00" type="number" required/>
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md">د.ج</span>
+</div>
+</div>
+<!-- Title Input -->
+<div class="group space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mr-1 transition-colors group-focus-within:text-primary">الوصف (اختياري)</label>
+<input id="title-input" class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-4 py-3 text-body-md font-body-md focus:ring-4 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all" placeholder="مثال: غداء مع الزملاء" type="text"/>
+</div>
+<!-- Type Selector -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mr-1">نوع العملية</label>
+<div id="type-selector" class="grid grid-cols-2 gap-3 p-1 bg-surface-container rounded-xl">
+<button data-type="expense" class="py-2.5 rounded-lg font-label-md text-label-md transition-all bg-white shadow-sm active text-on-surface hover:scale-[1.02] active:scale-95" type="button">صرف</button>
+<button data-type="income" class="py-2.5 rounded-lg font-label-md text-label-md transition-all text-on-surface-variant hover:scale-[1.02] active:scale-95" type="button">دخل</button>
+</div>
+</div>
+<!-- Category Chips -->
+<div class="space-y-3">
+<label class="block font-label-md text-label-md text-on-surface-variant mr-1">التصنيف</label>
+<div id="category-chips" class="flex flex-wrap gap-2">
+<button data-category="طعام" class="category-chip px-4 py-2 rounded-full border border-outline-variant/50 text-label-md font-label-md hover:bg-secondary-container/30 transition-all bg-secondary-container text-on-secondary-container active:scale-90 scale-105" type="button">طعام</button>
+<button data-category="ترفيه" class="category-chip px-4 py-2 rounded-full border border-outline-variant/50 text-label-md font-label-md hover:bg-secondary-container/30 transition-all text-on-surface-variant active:scale-90" type="button">ترفيه</button>
+<button data-category="سكن" class="category-chip px-4 py-2 rounded-full border border-outline-variant/50 text-label-md font-label-md hover:bg-secondary-container/30 transition-all text-on-surface-variant active:scale-90" type="button">سكن</button>
+<button data-category="نقل" class="category-chip px-4 py-2 rounded-full border border-outline-variant/50 text-label-md font-label-md hover:bg-secondary-container/30 transition-all text-on-surface-variant active:scale-90" type="button">نقل</button>
+<button data-category="تسوق" class="category-chip px-4 py-2 rounded-full border border-outline-variant/50 text-label-md font-label-md hover:bg-secondary-container/30 transition-all text-on-surface-variant active:scale-90" type="button">تسوق</button>
+<button data-category="تقنية" class="category-chip px-4 py-2 rounded-full border border-outline-variant/50 text-label-md font-label-md hover:bg-secondary-container/30 transition-all text-on-surface-variant active:scale-90" type="button">تقنية</button>
+<button data-category="دخل" class="category-chip px-4 py-2 rounded-full border border-outline-variant/50 text-label-md font-label-md hover:bg-secondary-container/30 transition-all text-on-surface-variant active:scale-90" type="button">دخل</button>
+<button data-category="أخرى" class="category-chip px-4 py-2 rounded-full border border-outline-variant/50 text-label-md font-label-md hover:bg-secondary-container/30 transition-all text-on-surface-variant active:scale-90" type="button">أخرى</button>
+</div>
+</div>
+<!-- Submit Button -->
+<button id="submit-tx-btn" class="w-full bg-primary-container text-on-primary py-4 rounded-xl font-headline-sm text-headline-sm hover:bg-primary transition-all active:scale-[0.98] hover:shadow-lg shadow-primary-container/20 mt-4" type="submit">إضافة العملية</button>
+</form>
+</div>
+</section>
+</div>
+</div>
+
+<!-- ==================== TRANSACTIONS VIEW ==================== -->
+<div id="view-transactions" class="hidden space-y-6 pb-8">
+    <div class="flex justify-between items-center px-2 flex-wrap gap-3">
+        <h2 class="font-headline-md text-headline-md text-on-surface">سجل المعاملات</h2>
+        <div class="flex gap-2 flex-wrap" id="transaction-filters">
+            <button data-filter="all" class="filter-btn px-3 py-1.5 bg-primary-container text-on-primary-container rounded-lg text-label-sm font-label-sm active:scale-95 transition-all">الكل</button>
+            <button data-filter="expense" class="filter-btn px-3 py-1.5 bg-surface-container text-on-surface-variant rounded-lg text-label-sm font-label-sm active:scale-95 transition-all">صرف</button>
+            <button data-filter="income" class="filter-btn px-3 py-1.5 bg-surface-container text-on-surface-variant rounded-lg text-label-sm font-label-sm active:scale-95 transition-all">دخل</button>
+            <a href="/api/transactions/export/csv" class="px-3 py-1.5 bg-surface-container-high text-on-surface rounded-lg text-label-sm font-label-sm active:scale-95 transition-all flex items-center gap-1 hover:bg-secondary-container/50">
+              <span class="material-symbols-outlined text-[14px]">download</span>
+              تصدير CSV
+            </a>
+        </div>
+    </div>
+    <div id="all-transactions-list" class="space-y-3 pb-8">
+        <div class="flex items-center justify-center py-8"><div class="loading-spinner"></div></div>
+    </div>
+</div>
+
+<!-- ==================== REPORTS VIEW ==================== -->
+<div id="view-reports" class="hidden space-y-6 pb-8">
+    <div class="px-2">
+        <h2 class="font-headline-md text-headline-md text-on-surface">تقارير المصاريف</h2>
+        <p class="font-label-md text-label-md text-on-surface-variant">تحليل مصاريفك حسب التصنيف</p>
+    </div>
+    <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 flex flex-col items-center justify-center min-h-[300px]">
+        <span class="material-symbols-outlined text-[64px] text-primary-container/30 mb-4" id="report-pie-icon">pie_chart</span>
+        <div id="report-pie-chart" class="w-48 h-48 rounded-full mb-6 relative hidden shadow-sm border-[6px] border-surface-container-lowest transition-all duration-700">
+            <div class="absolute inset-0 rounded-full bg-surface-container-lowest m-6 shadow-inner flex items-center justify-center flex-col z-10">
+                <span class="text-label-sm text-on-surface-variant">الإجمالي</span>
+                <span class="text-label-md font-bold text-on-surface" id="report-total-amount"></span>
+            </div>
+        </div>
+        <p class="font-label-md text-label-md text-on-surface-variant mb-6">توزيع المصاريف (الشهر الحالي)</p>
+        <div id="reports-summary" class="w-full space-y-4">
+            <div class="flex items-center justify-center py-4"><div class="loading-spinner"></div></div>
+        </div>
+    </div>
+    <!-- Monthly Trend -->
+    <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30">
+        <h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">الاتجاه الشهري (آخر 6 أشهر)</h3>
+        <div id="monthly-trend" class="space-y-3">
+          <div class="flex items-center justify-center py-4"><div class="loading-spinner"></div></div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SAVINGS VIEW ==================== -->
+<div id="view-savings" class="hidden space-y-6 pb-8">
+    <div class="px-2">
+        <h2 class="font-headline-md text-headline-md text-on-surface">أهداف التوفير</h2>
+        <p class="font-label-md text-label-md text-on-surface-variant">تابع أهدافك المالية وادخر من أجل المستقبل</p>
+    </div>
+    
+    <!-- Total Savings Summary Card -->
+    <div class="animate-fade-in-up expense-card bg-gradient-to-br from-primary-container to-tertiary-container p-6 rounded-2xl text-on-primary flex flex-col justify-between overflow-hidden relative group" style="animation-delay: 0.1s;">
+        <div class="relative z-10 flex justify-between items-start">
+            <div>
+                <p class="font-label-md text-label-md opacity-90 text-on-primary/80">إجمالي المدخرات</p>
+                <h2 id="total-savings" class="font-display-lg text-display-lg mt-2 text-white">---</h2>
+            </div>
+            <span class="material-symbols-outlined text-[48px] text-white/30">savings</span>
+        </div>
+        <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+    </div>
+
+    <!-- Savings layout: goals + add-form -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Savings Goals List -->
+        <section class="lg:col-span-7 space-y-4">
+            <div class="flex justify-between items-center px-2">
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">أهدافك الحالية</h3>
+            </div>
+            <div id="savings-goals-list" class="space-y-4">
+                <div class="flex items-center justify-center py-8"><div class="loading-spinner"></div></div>
+            </div>
+        </section>
+        
+        <!-- Add Goal Form -->
+        <section class="lg:col-span-5 sticky top-24">
+            <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-lg animate-fade-in-up" style="animation-delay: 0.2s;">
+                <div class="mb-6">
+                    <h3 class="font-headline-sm text-headline-sm text-primary font-semibold">إضافة هدف جديد</h3>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">حدد هدفك المالي وابدأ التوفير له</p>
+                </div>
+                <form id="savings-goal-form" class="space-y-4">
+                    <div class="space-y-1">
+                        <label class="block font-label-md text-label-md text-on-surface-variant mr-1">اسم الهدف</label>
+                        <input id="savings-title-input" class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-4 py-2.5 text-body-md font-body-md focus:ring-4 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all" placeholder="مثال: شراء هاتف جديد، رحلة سياحية" type="text" required/>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block font-label-md text-label-md text-on-surface-variant mr-1">المبلغ المستهدف</label>
+                        <div class="relative">
+                            <input id="savings-target-input" class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-4 py-2.5 text-body-md font-body-md focus:ring-4 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all pr-12" placeholder="0.00" type="number" required min="1"/>
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md">د.ج</span>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block font-label-md text-label-md text-on-surface-variant mr-1">المبلغ الموفر حالياً (اختياري)</label>
+                        <div class="relative">
+                            <input id="savings-initial-input" class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-4 py-2.5 text-body-md font-body-md focus:ring-4 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all pr-12" placeholder="0.00" type="number" min="0"/>
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md">د.ج</span>
+                        </div>
+                    </div>
+                    <!-- Icon Selector -->
+                    <div class="space-y-2">
+                        <label class="block font-label-md text-label-md text-on-surface-variant mr-1">أيقونة الهدف</label>
+                        <div id="savings-icon-selector" class="grid grid-cols-4 gap-2">
+                            <button type="button" data-icon="laptop_mac" class="savings-icon-btn py-2 rounded-xl border border-outline-variant/50 text-on-surface-variant flex items-center justify-center hover:bg-secondary-container/30 active:scale-95 transition-all bg-secondary-container text-on-secondary-container border-primary-container"><span class="material-symbols-outlined">laptop_mac</span></button>
+                            <button type="button" data-icon="directions_car" class="savings-icon-btn py-2 rounded-xl border border-outline-variant/50 text-on-surface-variant flex items-center justify-center hover:bg-secondary-container/30 active:scale-95 transition-all"><span class="material-symbols-outlined">directions_car</span></button>
+                            <button type="button" data-icon="home" class="savings-icon-btn py-2 rounded-xl border border-outline-variant/50 text-on-surface-variant flex items-center justify-center hover:bg-secondary-container/30 active:scale-95 transition-all"><span class="material-symbols-outlined">home</span></button>
+                            <button type="button" data-icon="flight" class="savings-icon-btn py-2 rounded-xl border border-outline-variant/50 text-on-surface-variant flex items-center justify-center hover:bg-secondary-container/30 active:scale-95 transition-all"><span class="material-symbols-outlined">flight</span></button>
+                        </div>
+                    </div>
+                    <button id="submit-savings-btn" class="w-full bg-primary-container text-on-primary py-3.5 rounded-xl font-headline-sm text-headline-sm hover:bg-primary transition-all active:scale-[0.98] hover:shadow-lg shadow-primary-container/20 mt-2" type="submit">إضافة الهدف</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- ==================== BILLS VIEW ==================== -->
+<div id="view-bills" class="hidden space-y-6 pb-8">
+    <div class="px-2">
+        <h2 class="font-headline-md text-headline-md text-on-surface">الفواتير الشهرية</h2>
+        <p class="font-label-md text-label-md text-on-surface-variant">تتبع فواتيرك وتأكد من سدادها في وقتها</p>
+    </div>
+    
+    <!-- Bills Summary -->
+    <div class="grid grid-cols-2 gap-4">
+        <div class="expense-card bg-surface-container-lowest p-4 rounded-xl border-r-4 border-r-primary-container">
+            <p class="font-label-sm text-label-sm text-on-surface-variant">مدفوعة</p>
+            <h3 id="bills-paid-total" class="font-headline-sm text-headline-sm text-primary mt-1">---</h3>
+        </div>
+        <div class="expense-card bg-surface-container-lowest p-4 rounded-xl border-r-4 border-r-error">
+            <p class="font-label-sm text-label-sm text-on-surface-variant">متبقية</p>
+            <h3 id="bills-pending-total" class="font-headline-sm text-headline-sm text-error mt-1">---</h3>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Bills List -->
+        <section class="lg:col-span-7 space-y-4">
+            <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold px-2">فواتير هذا الشهر</h3>
+            <div id="bills-list" class="space-y-3">
+                <div class="flex items-center justify-center py-8"><div class="loading-spinner"></div></div>
+            </div>
+        </section>
+
+        <!-- Add Bill Form -->
+        <section class="lg:col-span-5 sticky top-24">
+            <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-lg">
+                <div class="mb-6">
+                    <h3 class="font-headline-sm text-headline-sm text-primary font-semibold">إضافة فاتورة جديدة</h3>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">أضف فاتورة دورية للمتابعة</p>
+                </div>
+                <form id="bill-form" class="space-y-4">
+                    <div class="space-y-1">
+                        <label class="block font-label-md text-label-md text-on-surface-variant">اسم الفاتورة</label>
+                        <input id="bill-title-input" class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-4 py-2.5 text-body-md focus:ring-4 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all" placeholder="مثال: فاتورة الكهرباء" type="text" required/>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block font-label-md text-label-md text-on-surface-variant">المبلغ</label>
+                        <div class="relative">
+                            <input id="bill-amount-input" class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-4 py-2.5 text-body-md focus:ring-4 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all pr-12" placeholder="0.00" type="number" required min="1"/>
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md">د.ج</span>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block font-label-md text-label-md text-on-surface-variant">يوم الاستحقاق</label>
+                        <input id="bill-due-day-input" class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-4 py-2.5 text-body-md focus:ring-4 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all" placeholder="من 1 إلى 31" type="number" min="1" max="31" required/>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block font-label-md text-label-md text-on-surface-variant">التصنيف</label>
+                        <select id="bill-category-input" class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-4 py-2.5 text-body-md focus:ring-4 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all">
+                            <option value="سكن">سكن</option>
+                            <option value="كهرباء">كهرباء</option>
+                            <option value="ماء">ماء</option>
+                            <option value="تقنية">تقنية</option>
+                            <option value="نقل">نقل</option>
+                            <option value="أخرى">أخرى</option>
+                        </select>
+                    </div>
+                    <button id="submit-bill-btn" class="w-full bg-primary-container text-on-primary py-3.5 rounded-xl font-headline-sm text-headline-sm hover:bg-primary transition-all active:scale-[0.98] hover:shadow-lg mt-2" type="submit">إضافة الفاتورة</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- ==================== BUDGETS VIEW ==================== -->
+<div id="view-budgets" class="hidden space-y-6 pb-8">
+    <div class="px-2">
+        <h2 class="font-headline-md text-headline-md text-on-surface">الميزانيات الشهرية</h2>
+        <p class="font-label-md text-label-md text-on-surface-variant">حدد سقف إنفاقك لكل تصنيف وتابع مدى التزامك</p>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Budgets List -->
+        <section class="lg:col-span-7 space-y-4">
+            <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold px-2">الميزانيات الحالية</h3>
+            <div id="budgets-list" class="space-y-4">
+                <div class="flex items-center justify-center py-8"><div class="loading-spinner"></div></div>
+            </div>
+        </section>
+
+        <!-- Add Budget Form -->
+        <section class="lg:col-span-5 sticky top-24">
+            <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-lg">
+                <div class="mb-6">
+                    <h3 class="font-headline-sm text-headline-sm text-primary font-semibold">إضافة ميزانية</h3>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">حدد حداً أقصى للإنفاق في تصنيف معين</p>
+                </div>
+                <form id="budget-form" class="space-y-4">
+                    <div class="space-y-1">
+                        <label class="block font-label-md text-label-md text-on-surface-variant">التصنيف</label>
+                        <select id="budget-category-input" class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-4 py-2.5 text-body-md focus:ring-4 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all">
+                            <option value="طعام">طعام</option>
+                            <option value="ترفيه">ترفيه</option>
+                            <option value="سكن">سكن</option>
+                            <option value="نقل">نقل</option>
+                            <option value="تسوق">تسوق</option>
+                            <option value="تقنية">تقنية</option>
+                            <option value="أخرى">أخرى</option>
+                        </select>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block font-label-md text-label-md text-on-surface-variant">الحد الأقصى</label>
+                        <div class="relative">
+                            <input id="budget-limit-input" class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-4 py-2.5 text-body-md focus:ring-4 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all pr-12" placeholder="0.00" type="number" required min="1"/>
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md">د.ج</span>
+                        </div>
+                    </div>
+                    <button id="submit-budget-btn" class="w-full bg-primary-container text-on-primary py-3.5 rounded-xl font-headline-sm text-headline-sm hover:bg-primary transition-all active:scale-[0.98] hover:shadow-lg mt-2" type="submit">حفظ الميزانية</button>
+                </form>
+            </div>
+
+            <!-- Financial Health Card (Insights) -->
+            <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-lg mt-6" id="health-card">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-headline-sm text-headline-sm text-primary font-semibold">الصحة المالية</h3>
+                    <span class="material-symbols-outlined text-primary">favorite</span>
+                </div>
+                <!-- Score Ring -->
+                <div class="flex items-center justify-center mb-4">
+                    <div class="relative w-32 h-32">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(var(--color-surface-container),1)" stroke-width="10"/>
+                            <circle id="health-score-ring" cx="50" cy="50" r="42" fill="none" stroke="rgba(var(--color-primary-container),1)" stroke-width="10" stroke-linecap="round"
+                                stroke-dasharray="263.9" stroke-dashoffset="263.9" class="score-ring" style="transition: stroke-dashoffset 1.5s ease;"/>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <span id="health-score-value" class="text-2xl font-bold text-primary">--</span>
+                            <span class="text-[10px] text-on-surface-variant">/ 100</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="health-tips" class="space-y-2">
+                    <div class="flex items-center justify-center py-2"><div class="loading-spinner"></div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+</main>
+<!-- Magic Dynamic Navigation Island -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] drop-shadow-2xl">
+  <!-- The Island -->
+  <div id="dynamic-island" class="relative bg-surface/85 dark:bg-surface-dim/85 backdrop-blur-3xl border border-outline-variant/30 flex items-center justify-center cursor-pointer overflow-hidden group" style="width: 150px; height: 56px; border-radius: 100px; transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 8px 32px rgba(var(--color-primary), 0.25);">
+    
+    <!-- Collapsed View -->
+    <div id="island-collapsed" class="absolute inset-0 flex items-center justify-center gap-2 text-primary transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] pointer-events-none">
+      <span class="material-symbols-outlined group-hover:rotate-90 group-hover:scale-110 transition-transform duration-500">apps</span>
+      <span class="font-label-md font-bold tracking-wide">القائمة</span>
+    </div>
+
+    <!-- Expanded View -->
+    <div id="island-expanded" class="absolute inset-0 opacity-0 pointer-events-none flex flex-col p-4 transition-all duration-300">
+      
+      <!-- Grid of Buttons -->
+      <div class="grid grid-cols-3 gap-3 flex-1 h-full w-full relative pt-1">
+         <button data-target="view-home" class="nav-btn flex flex-col items-center justify-center gap-1.5 rounded-[20px] bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all active:scale-90 shadow-sm hover:shadow-primary/40 transform translate-y-3 opacity-0 island-item" style="transition-delay: 0.05s">
+            <span class="material-symbols-outlined text-[24px] text-primary transition-colors" style="font-variation-settings: 'FILL' 1;">home</span>
+            <span class="font-label-sm font-semibold text-[11px]">الرئيسية</span>
+         </button>
+         <button data-target="view-transactions" class="nav-btn flex flex-col items-center justify-center gap-1.5 rounded-[20px] bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all active:scale-90 shadow-sm hover:shadow-primary/40 transform translate-y-3 opacity-0 island-item" style="transition-delay: 0.1s">
+            <span class="material-symbols-outlined text-[24px] text-primary transition-colors">account_balance_wallet</span>
+            <span class="font-label-sm font-semibold text-[11px]">المعاملات</span>
+         </button>
+         <button data-target="view-reports" class="nav-btn flex flex-col items-center justify-center gap-1.5 rounded-[20px] bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all active:scale-90 shadow-sm hover:shadow-primary/40 transform translate-y-3 opacity-0 island-item" style="transition-delay: 0.15s">
+            <span class="material-symbols-outlined text-[24px] text-primary transition-colors">analytics</span>
+            <span class="font-label-sm font-semibold text-[11px]">التقارير</span>
+         </button>
+         <button data-target="view-savings" class="nav-btn flex flex-col items-center justify-center gap-1.5 rounded-[20px] bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all active:scale-90 shadow-sm hover:shadow-primary/40 transform translate-y-3 opacity-0 island-item" style="transition-delay: 0.2s">
+            <span class="material-symbols-outlined text-[24px] text-primary transition-colors">savings</span>
+            <span class="font-label-sm font-semibold text-[11px]">التوفير</span>
+         </button>
+         <button data-target="view-bills" class="nav-btn flex flex-col items-center justify-center gap-1.5 rounded-[20px] bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all active:scale-90 shadow-sm hover:shadow-primary/40 transform translate-y-3 opacity-0 island-item" style="transition-delay: 0.25s">
+            <span class="material-symbols-outlined text-[24px] text-primary transition-colors">receipt_long</span>
+            <span class="font-label-sm font-semibold text-[11px]">الفواتير</span>
+         </button>
+         <button data-target="view-budgets" class="nav-btn flex flex-col items-center justify-center gap-1.5 rounded-[20px] bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all active:scale-90 shadow-sm hover:shadow-primary/40 transform translate-y-3 opacity-0 island-item" style="transition-delay: 0.3s">
+            <span class="material-symbols-outlined text-[24px] text-primary transition-colors">pie_chart</span>
+            <span class="font-label-sm font-semibold text-[11px]">الميزانية</span>
+         </button>
+      </div>
+
+      <!-- Close Handle -->
+      <div class="mt-4 mb-1 flex justify-center items-center opacity-0 transform translate-y-2 transition-all duration-500 delay-300" id="island-handle">
+         <div class="w-12 h-1.5 bg-outline-variant/60 rounded-full"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// =============================================
+//  API BASE URL
+// =============================================
+const API = window.location.origin;
+
+// =============================================
+//  UTILITIES
+// =============================================
+const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('ar-DZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount) + ' د.ج';
+};
+
+const apiGet = async (path) => {
+    const res = await fetch(`${API}${path}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+};
+
+const apiPost = async (path, body) => {
+    const res = await fetch(`${API}${path}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+    });
+    if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || `HTTP ${res.status}`);
+    }
+    return res.json();
+};
+
+const apiPatch = async (path, body = {}) => {
+    const res = await fetch(`${API}${path}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+};
+
+const apiDelete = async (path) => {
+    const res = await fetch(`${API}${path}`, { method: 'DELETE' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+};
+
+// =============================================
+//  APP STATE
+// =============================================
+let currentType = 'expense';
+let currentCategory = 'طعام';
+let currentTransactionFilter = 'all';
+let currentSavingsIcon = 'laptop_mac';
+
+// =============================================
+//  DYNAMIC ISLAND NAVIGATION
+// =============================================
+const views = ['view-home', 'view-transactions', 'view-reports', 'view-savings', 'view-bills', 'view-budgets'];
+const navBtns = document.querySelectorAll('.nav-btn');
+
+const island = document.getElementById('dynamic-island');
+const islandCollapsed = document.getElementById('island-collapsed');
+const islandExpanded = document.getElementById('island-expanded');
+const islandItems = document.querySelectorAll('.island-item');
+const islandHandle = document.getElementById('island-handle');
+let isIslandExpanded = false;
+
+function toggleIsland(forceClose = false) {
+    if (!island) return;
+    
+    if (isIslandExpanded || forceClose) {
+        // Collapse
+        island.style.width = '150px';
+        island.style.height = '56px';
+        island.style.borderRadius = '100px';
+        
+        islandExpanded.classList.add('opacity-0', 'pointer-events-none');
+        islandExpanded.classList.remove('opacity-100', 'pointer-events-auto');
+        
+        // Hide items
+        islandItems.forEach(item => {
+            item.classList.add('translate-y-3', 'opacity-0');
+            item.classList.remove('translate-y-0', 'opacity-100');
+        });
+        if(islandHandle) {
+            islandHandle.classList.add('translate-y-2', 'opacity-0');
+            islandHandle.classList.remove('translate-y-0', 'opacity-100');
+        }
+
+        setTimeout(() => {
+            islandCollapsed.classList.remove('opacity-0', 'scale-50');
+            islandCollapsed.classList.add('opacity-100', 'scale-100');
+        }, 150);
+
+        isIslandExpanded = false;
+    } else {
+        // Expand
+        island.style.width = '320px';
+        island.style.height = '270px';
+        island.style.borderRadius = '32px';
+        
+        islandCollapsed.classList.add('opacity-0', 'scale-50');
+        islandCollapsed.classList.remove('opacity-100', 'scale-100');
+
+        setTimeout(() => {
+            islandExpanded.classList.remove('opacity-0', 'pointer-events-none');
+            islandExpanded.classList.add('opacity-100', 'pointer-events-auto');
+            
+            // Show items staggered
+            islandItems.forEach(item => {
+                item.classList.remove('translate-y-3', 'opacity-0');
+                item.classList.add('translate-y-0', 'opacity-100');
+            });
+            if(islandHandle) {
+                islandHandle.classList.remove('translate-y-2', 'opacity-0');
+                islandHandle.classList.add('translate-y-0', 'opacity-100');
+            }
+        }, 200);
+
+        isIslandExpanded = true;
+    }
+}
+
+if(island) {
+    island.addEventListener('click', (e) => {
+        // Only toggle if not clicking an active button
+        if(e.target.closest('button')) return;
+        toggleIsland();
+    });
+}
+
+// Close when clicking outside
+document.addEventListener('click', (e) => {
+    if (isIslandExpanded && island && !island.contains(e.target)) {
+        toggleIsland(true);
+    }
+});
+
+function switchView(targetId) {
+    views.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+    });
+    const target = document.getElementById(targetId);
+    if (target) {
+        target.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    navBtns.forEach(btn => {
+        const isActive = btn.dataset.target === targetId;
+        const icon = btn.querySelector('.material-symbols-outlined');
+        
+        if (isActive) {
+            btn.classList.add('bg-primary', 'text-on-primary', 'shadow-md');
+            btn.classList.remove('bg-surface-container-highest');
+            if(icon) {
+                icon.classList.remove('text-primary');
+                icon.style.fontVariationSettings = "'FILL' 1";
+            }
+        } else {
+            btn.classList.add('bg-surface-container-highest');
+            btn.classList.remove('bg-primary', 'text-on-primary', 'shadow-md');
+            if(icon) {
+                icon.classList.add('text-primary');
+                icon.style.fontVariationSettings = "'FILL' 0";
+            }
+        }
+    });
+
+    // Close island if open
+    if (isIslandExpanded) {
+        toggleIsland(true);
+    }
+
+    // Load data on view switch
+    if (targetId === 'view-home') { loadSummary(); loadRecentTransactions(); }
+    if (targetId === 'view-transactions') loadAllTransactions();
+    if (targetId === 'view-reports') loadReports();
+    if (targetId === 'view-savings') loadSavings();
+    if (targetId === 'view-bills') loadBills();
+    if (targetId === 'view-budgets') { loadBudgets(); loadHealthScore(); }
+}
+
+navBtns.forEach(btn => {
+    btn.addEventListener('click', () => switchView(btn.dataset.target));
+});
+
+// =============================================
+//  HOME — SUMMARY & RECENT TRANSACTIONS
+// =============================================
+async function loadSummary() {
+    try {
+        const data = await apiGet('/api/transactions/summary');
+        document.getElementById('total-balance').innerText = formatCurrency(data.balance);
+        document.getElementById('total-income').innerText = formatCurrency(data.income);
+        document.getElementById('total-expense').innerText = formatCurrency(data.expense);
+
+        const incomeBar = document.getElementById('income-bar');
+        const expenseBar = document.getElementById('expense-bar');
+        const total = data.income + data.expense || 1;
+        incomeBar.style.width = `${Math.round((data.income / total) * 100)}%`;
+        expenseBar.style.width = `${Math.round((data.expense / total) * 100)}%`;
+
+        // Calculate savings rate for trend
+        const savingsRate = data.income > 0 ? (((data.income - data.expense) / data.income) * 100).toFixed(1) : 0;
+        document.getElementById('balance-trend').innerText = `نسبة الادخار ${savingsRate}%`;
+    } catch (e) {
+        console.error('loadSummary:', e);
+    }
+}
+
+async function loadRecentTransactions() {
+    const el = document.getElementById('transactions-list');
+    try {
+        const data = await apiGet('/api/transactions?limit=5');
+        renderTransactionCards(data.transactions, el, true);
+    } catch (e) {
+        el.innerHTML = '<p class="text-center text-error font-label-md py-4">تعذر تحميل المعاملات. تأكد من تشغيل الخادم.</p>';
+    }
+}
+
+function renderTransactionCards(transactions, container, compact = false) {
+    if (!transactions || transactions.length === 0) {
+        container.innerHTML = '<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 text-center"><span class="material-symbols-outlined text-[48px] text-on-surface-variant/30 mb-2">inbox</span><p class="text-on-surface-variant font-label-md">لا توجد معاملات بعد.</p></div>';
+        return;
+    }
+    container.innerHTML = '';
+    transactions.forEach((t, index) => {
+        const amountText = t.type === 'income' ? `+ ${formatCurrency(t.amount)}` : `- ${formatCurrency(t.amount)}`;
+        const amountColor = t.type === 'income' ? 'text-primary' : 'text-error';
+        const badgeBg = t.type === 'income' ? 'bg-primary-container/10 text-primary-container' : 'bg-surface-container text-on-surface-variant';
+        const colorClass = t.color_class || (t.type === 'income' ? 'bg-primary-container/10 text-primary-container' : 'bg-secondary-container/50 text-on-secondary-container');
+        
+        const trHTML = `
+        <div class="animate-fade-in-up expense-card bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between group cursor-pointer active:scale-95 hover:translate-x-[-4px]" style="animation-delay: ${0.05 * Math.min(index, 10)}s;">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full ${colorClass} flex items-center justify-center transition-transform group-hover:scale-110">
+                <span class="material-symbols-outlined">${t.icon || 'payments'}</span>
+              </div>
+              <div>
+                <h4 class="font-label-md text-label-md text-on-surface">${t.title}</h4>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">${t.date}</p>
+              </div>
+            </div>
+            <div class="flex flex-col items-end gap-1">
+              <p class="font-label-md text-label-md ${amountColor}" dir="ltr">${amountText}</p>
+              <span class="inline-block px-2 py-0.5 rounded ${badgeBg} text-[10px]">${t.category}</span>
+              ${!compact ? `<button onclick="deleteTransaction(${t.id})" class="text-error hover:bg-error-container/20 p-1 rounded-full transition-all active:scale-90 mt-1" title="حذف">
+                <span class="material-symbols-outlined text-[14px]">delete</span>
+              </button>` : ''}
+            </div>
+        </div>`;
+        container.insertAdjacentHTML('beforeend', trHTML);
+    });
+}
+
+// =============================================
+//  TRANSACTIONS VIEW
+// =============================================
+async function loadAllTransactions() {
+    const el = document.getElementById('all-transactions-list');
+    el.innerHTML = '<div class="flex items-center justify-center py-8"><div class="loading-spinner"></div></div>';
+    try {
+        const filterParam = currentTransactionFilter !== 'all' ? `&type=${currentTransactionFilter}` : '';
+        const data = await apiGet(`/api/transactions?limit=100${filterParam}`);
+        renderTransactionCards(data.transactions, el, false);
+    } catch (e) {
+        el.innerHTML = '<p class="text-center text-error font-label-md py-4">تعذر تحميل المعاملات.</p>';
+    }
+}
+
+window.deleteTransaction = async (id) => {
+    if (!confirm('هل أنت متأكد من حذف هذه المعاملة؟')) return;
+    try {
+        await apiDelete(`/api/transactions/${id}`);
+        showToast('تم حذف المعاملة', 'info');
+        loadAllTransactions();
+        loadSummary();
+    } catch (e) {
+        showToast('فشل الحذف', 'error');
+    }
+};
+
+document.querySelectorAll('#transaction-filters .filter-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        currentTransactionFilter = e.currentTarget.dataset.filter;
+        document.querySelectorAll('#transaction-filters .filter-btn').forEach(b => {
+            b.classList.remove('bg-primary-container', 'text-on-primary-container');
+            b.classList.add('bg-surface-container', 'text-on-surface-variant');
+        });
+        e.currentTarget.classList.add('bg-primary-container', 'text-on-primary-container');
+        e.currentTarget.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        loadAllTransactions();
+    });
+});
+
+// =============================================
+//  ADD TRANSACTION FORM
+// =============================================
+const typeButtons = document.querySelectorAll('#type-selector button');
+const categoryChips = document.querySelectorAll('.category-chip');
+
+typeButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        typeButtons.forEach(b => {
+            b.classList.remove('bg-white', 'shadow-sm', 'active', 'text-on-surface');
+            b.classList.add('text-on-surface-variant');
+        });
+        const target = e.currentTarget;
+        target.classList.add('bg-white', 'shadow-sm', 'active', 'text-on-surface');
+        target.classList.remove('text-on-surface-variant');
+        currentType = target.dataset.type;
+    });
+});
+
+categoryChips.forEach(chip => {
+    chip.addEventListener('click', (e) => {
+        categoryChips.forEach(c => {
+            c.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'scale-105');
+            c.classList.add('text-on-surface-variant');
+        });
+        const target = e.currentTarget;
+        target.classList.add('bg-secondary-container', 'text-on-secondary-container', 'scale-105');
+        target.classList.remove('text-on-surface-variant');
+        currentCategory = target.dataset.category;
+    });
+});
+
+document.getElementById('transaction-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const amount = parseFloat(document.getElementById('amount-input').value);
+    const titleInput = document.getElementById('title-input').value.trim();
+
+    if (isNaN(amount) || amount <= 0) {
+        showToast('الرجاء إدخال مبلغ صحيح', 'error');
+        return;
+    }
+
+    const btn = document.getElementById('submit-tx-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<div class="loading-spinner mx-auto"></div>';
+
+    // Determine icon based on category
+    const iconMap = { 'طعام': 'restaurant', 'ترفيه': 'movie', 'سكن': 'home', 'نقل': 'directions_car', 'تسوق': 'shopping_bag', 'تقنية': 'laptop_mac', 'دخل': 'payments', 'أخرى': 'payments' };
+    const icon = iconMap[currentCategory] || 'payments';
+    const colorClass = currentType === 'income' ? 'bg-primary-container/10 text-primary-container' : 'bg-secondary-container/50 text-on-secondary-container';
+    const dateOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+    const dateStr = new Intl.DateTimeFormat('ar-EG', dateOptions).format(new Date());
+    
+    let title = titleInput || (currentType === 'income' ? (currentCategory === 'دخل' ? 'دخل جديد' : currentCategory) : currentCategory);
+
+    try {
+        const newTx = await apiPost('/api/transactions', {
+            title, amount, type: currentType, category: currentCategory,
+            icon, color_class: colorClass, date: dateStr
+        });
+
+        document.getElementById('amount-input').value = '';
+        document.getElementById('title-input').value = '';
+        
+        loadSummary();
+        loadRecentTransactions();
+
+        addNotification(
+            `تمت إضافة ${currentType === 'income' ? 'دخل جديد' : 'مصروف جديد'}`,
+            `تم تسجيل مبلغ ${formatCurrency(amount)} في تصنيف "${currentCategory}" بنجاح.`,
+            icon, currentType
+        );
+        showToast(`تمت إضافة العملية بنجاح! ${formatCurrency(amount)}`, 'success');
+    } catch (err) {
+        showToast('فشلت إضافة المعاملة: ' + err.message, 'error');
+    } finally {
+        btn.disabled = false;
+        btn.innerText = 'إضافة العملية';
+    }
+});
+
+// =============================================
+//  REPORTS VIEW
+// =============================================
+async function loadReports() {
+    const reportsSummaryEl = document.getElementById('reports-summary');
+    const monthlyTrendEl = document.getElementById('monthly-trend');
+    reportsSummaryEl.innerHTML = '<div class="flex items-center justify-center py-4"><div class="loading-spinner"></div></div>';
+    monthlyTrendEl.innerHTML = '<div class="flex items-center justify-center py-4"><div class="loading-spinner"></div></div>';
+
+    try {
+        const data = await apiGet('/api/transactions/summary');
+        
+        // Pie chart
+        const pieChartEl = document.getElementById('report-pie-chart');
+        const pieIconEl = document.getElementById('report-pie-icon');
+        const pieTotalEl = document.getElementById('report-total-amount');
+        const totalExpenses = data.byCategory.reduce((s, c) => s + c.total, 0);
+
+        if (totalExpenses === 0) {
+            reportsSummaryEl.innerHTML = '<p class="text-center text-on-surface-variant font-label-md">لا توجد مصاريف لتحليلها</p>';
+            pieChartEl.classList.add('hidden');
+            pieIconEl.classList.remove('hidden');
+        } else {
+            pieChartEl.classList.remove('hidden');
+            pieIconEl.classList.add('hidden');
+            pieTotalEl.innerText = formatCurrency(totalExpenses);
+
+            const colors = ['#008378', '#008375', '#ba1a1a', '#55615f', '#6bd8cb', '#3cddc7'];
+            const colorClasses = ['bg-primary-container', 'bg-tertiary-container', 'bg-error', 'bg-secondary', 'bg-primary-fixed-dim', 'bg-tertiary-fixed-dim'];
+            
+            let currentAngle = 0;
+            const gradientParts = [];
+            reportsSummaryEl.innerHTML = '';
+
+            data.byCategory.forEach(({ category, total }, index) => {
+                const pct = (total / totalExpenses) * 100;
+                gradientParts.push(`${colors[index % colors.length]} ${currentAngle}% ${currentAngle + pct}%`);
+                currentAngle += pct;
+
+                reportsSummaryEl.insertAdjacentHTML('beforeend', `
+                <div class="w-full">
+                    <div class="flex justify-between items-center mb-1">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full ${colorClasses[index % colorClasses.length]}"></div>
+                            <span class="font-label-md text-label-md text-on-surface">${category}</span>
+                        </div>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant">${formatCurrency(total)} (${Math.round(pct)}%)</span>
+                    </div>
+                    <div class="w-full bg-surface-container rounded-full h-2">
+                        <div class="${colorClasses[index % colorClasses.length]} h-2 rounded-full progress-fill" style="width: ${Math.round(pct)}%"></div>
+                    </div>
+                </div>`);
+            });
+
+            pieChartEl.style.background = `conic-gradient(${gradientParts.join(', ')})`;
+        }
+
+        // Monthly trend
+        if (!data.monthly || data.monthly.length === 0) {
+            monthlyTrendEl.innerHTML = '<p class="text-center text-on-surface-variant font-label-md py-4">لا يوجد بيانات شهرية كافية</p>';
+        } else {
+            monthlyTrendEl.innerHTML = '';
+            const maxVal = Math.max(...data.monthly.map(m => Math.max(m.income, m.expense)), 1);
+            data.monthly.forEach(m => {
+                const incW = Math.round((m.income / maxVal) * 100);
+                const expW = Math.round((m.expense / maxVal) * 100);
+                monthlyTrendEl.insertAdjacentHTML('beforeend', `
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center">
+                        <span class="font-label-sm text-label-sm text-on-surface-variant">${m.month}</span>
+                        <span class="font-label-sm text-label-sm text-on-surface">${formatCurrency(m.income - m.expense)}</span>
+                    </div>
+                    <div class="flex gap-1 items-center">
+                        <div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+                            <div class="h-full bg-primary-container progress-fill rounded-full" style="width:${incW}%"></div>
+                        </div>
+                        <div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+                            <div class="h-full bg-error progress-fill rounded-full" style="width:${expW}%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-on-surface-variant">
+                        <span>دخل: ${formatCurrency(m.income)}</span>
+                        <span>صرف: ${formatCurrency(m.expense)}</span>
+                    </div>
+                </div>`);
+            });
+        }
+    } catch (e) {
+        reportsSummaryEl.innerHTML = '<p class="text-center text-error font-label-md py-4">تعذر تحميل التقارير.</p>';
+    }
+}
+
+// =============================================
+//  SAVINGS VIEW
+// =============================================
+async function loadSavings() {
+    const listEl = document.getElementById('savings-goals-list');
+    const totalEl = document.getElementById('total-savings');
+    listEl.innerHTML = '<div class="flex items-center justify-center py-8"><div class="loading-spinner"></div></div>';
+    
+    try {
+        const data = await apiGet('/api/savings');
+        totalEl.innerText = formatCurrency(data.total);
+
+        if (!data.goals || data.goals.length === 0) {
+            listEl.innerHTML = `<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 text-center">
+                <span class="material-symbols-outlined text-[48px] text-on-surface-variant/30 mb-2">savings</span>
+                <p class="text-on-surface-variant font-label-md">لم تقم بإضافة أي أهداف توفير بعد.</p>
+            </div>`;
+            return;
+        }
+
+        listEl.innerHTML = '';
+        data.goals.forEach((goal, index) => {
+            const percentage = goal.target > 0 ? Math.min(100, Math.round((goal.current / goal.target) * 100)) : 0;
+            const colorClass = goal.color_class || 'bg-primary-container/10 text-primary-container';
+            listEl.insertAdjacentHTML('beforeend', `
+            <div class="animate-fade-in-up expense-card bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 flex flex-col gap-4 relative group" style="animation-delay: ${0.05 * index}s;">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full ${colorClass} flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[24px]">${goal.icon}</span>
+                        </div>
+                        <div>
+                            <h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">${goal.title}</h4>
+                            <p class="font-label-sm text-label-sm text-on-surface-variant">المستهدف: ${formatCurrency(goal.target)}</p>
+                        </div>
+                    </div>
+                    <button onclick="deleteSavingsGoal(${goal.id})" class="text-error hover:bg-error-container/20 p-2 rounded-full transition-all active:scale-90" title="حذف الهدف">
+                        <span class="material-symbols-outlined text-[20px]">delete</span>
+                    </button>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center text-label-md font-label-md">
+                        <span class="text-on-surface-variant">المدخر الحالي: <span class="text-primary font-semibold">${formatCurrency(goal.current)}</span></span>
+                        <span class="text-primary font-semibold">${percentage}%</span>
+                    </div>
+                    <div class="w-full bg-surface-container rounded-full h-2.5 overflow-hidden">
+                        <div class="progress-fill bg-gradient-to-l from-primary-container to-tertiary-container h-full rounded-full" style="width: ${percentage}%"></div>
+                    </div>
+                </div>
+                <div class="flex gap-2 justify-end">
+                    <button onclick="toggleDepositInput(${goal.id})" class="px-4 py-2 bg-primary-container/10 text-primary-container hover:bg-primary-container/20 rounded-xl text-label-sm font-label-sm active:scale-95 transition-all flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[16px]">add</span>
+                        <span>ادخار مبلغ</span>
+                    </button>
+                </div>
+                <div id="deposit-panel-${goal.id}" class="hidden flex items-center gap-2 mt-2 pt-3 border-t border-outline-variant/10">
+                    <div class="relative flex-1">
+                        <input id="deposit-input-${goal.id}" type="number" min="1" placeholder="المبلغ المراد إضافته" class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl px-3 py-2 text-label-md focus:ring-2 focus:ring-primary outline-none pr-12">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[12px]">د.ج</span>
+                    </div>
+                    <button onclick="confirmDeposit(${goal.id})" class="px-4 py-2 bg-primary-container text-on-primary rounded-xl text-label-sm font-label-sm hover:bg-primary active:scale-95">تأكيد</button>
+                    <button onclick="toggleDepositInput(${goal.id})" class="px-4 py-2 bg-surface-container text-on-surface-variant rounded-xl text-label-sm font-label-sm active:scale-95">إلغاء</button>
+                </div>
+            </div>`);
+        });
+    } catch (e) {
+        listEl.innerHTML = '<p class="text-center text-error font-label-md py-4">تعذر تحميل الأهداف.</p>';
+        totalEl.innerText = formatCurrency(0);
+    }
+}
+
+window.toggleDepositInput = (goalId) => {
+    const panel = document.getElementById(`deposit-panel-${goalId}`);
+    if (panel) {
+        panel.classList.toggle('hidden');
+        if (!panel.classList.contains('hidden')) {
+            document.getElementById(`deposit-input-${goalId}`)?.focus();
+        }
+    }
+};
+
+window.confirmDeposit = async (goalId) => {
+    const input = document.getElementById(`deposit-input-${goalId}`);
+    if (!input) return;
+    const amount = parseFloat(input.value);
+    if (isNaN(amount) || amount <= 0) {
+        showToast('الرجاء إدخال مبلغ صحيح أكبر من الصفر', 'error');
+        return;
+    }
+    try {
+        const updated = await apiPatch(`/api/savings/${goalId}/deposit`, { amount });
+        addNotification('تم ادخار مبلغ جديد', `تم إضافة ${formatCurrency(amount)} إلى هدف "${updated.title}" بنجاح.`, 'savings', 'savings');
+        showToast(`تم ادخار ${formatCurrency(amount)} بنجاح!`, 'success');
+        loadSavings();
+    } catch (err) {
+        showToast('فشل الادخار: ' + err.message, 'error');
+    }
+};
+
+window.deleteSavingsGoal = async (goalId) => {
+    if (!confirm('هل أنت متأكد من حذف هذا الهدف؟')) return;
+    try {
+        await apiDelete(`/api/savings/${goalId}`);
+        showToast('تم حذف الهدف', 'info');
+        addNotification('تم حذف هدف التوفير', 'تم حذف الهدف من قائمة أهدافك.', 'delete', 'system');
+        loadSavings();
+    } catch (e) {
+        showToast('فشل الحذف', 'error');
+    }
+};
+
+// Savings Icon Selection
+document.querySelectorAll('.savings-icon-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.savings-icon-btn').forEach(b => {
+            b.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'border-primary-container');
+        });
+        e.currentTarget.classList.add('bg-secondary-container', 'text-on-secondary-container', 'border-primary-container');
+        currentSavingsIcon = e.currentTarget.dataset.icon;
+    });
+});
+
+// Add Goal Form
+document.getElementById('savings-goal-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const title = document.getElementById('savings-title-input').value.trim();
+    const target = parseFloat(document.getElementById('savings-target-input').value);
+    const initial = parseFloat(document.getElementById('savings-initial-input').value) || 0;
+
+    if (!title) { showToast('الرجاء إدخال اسم الهدف', 'error'); return; }
+    if (isNaN(target) || target <= 0) { showToast('الرجاء إدخال مبلغ مستهدف صحيح', 'error'); return; }
+
+    const iconColorMap = {
+        'laptop_mac': 'bg-primary-container/10 text-primary-container',
+        'directions_car': 'bg-secondary-container/50 text-on-secondary-container',
+        'home': 'bg-tertiary-container/20 text-tertiary-container',
+        'flight': 'bg-error-container/20 text-error'
+    };
+
+    const btn = document.getElementById('submit-savings-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<div class="loading-spinner mx-auto"></div>';
+
+    try {
+        const newGoal = await apiPost('/api/savings', {
+            title, target, current: initial,
+            icon: currentSavingsIcon,
+            color_class: iconColorMap[currentSavingsIcon] || 'bg-primary-container/10 text-primary-container'
+        });
+
+        document.getElementById('savings-title-input').value = '';
+        document.getElementById('savings-target-input').value = '';
+        document.getElementById('savings-initial-input').value = '';
+
+        addNotification('تمت إضافة هدف توفير جديد', `تم إنشاء هدف "${newGoal.title}" بمبلغ مستهدف ${formatCurrency(newGoal.target)}.`, 'savings', 'savings');
+        showToast(`تمت إضافة هدف "${newGoal.title}" بنجاح!`, 'success');
+        loadSavings();
+    } catch (err) {
+        showToast('فشلت الإضافة: ' + err.message, 'error');
+    } finally {
+        btn.disabled = false;
+        btn.innerText = 'إضافة الهدف';
+    }
+});
+
+// =============================================
+//  BILLS VIEW
+// =============================================
+async function loadBills() {
+    const listEl = document.getElementById('bills-list');
+    listEl.innerHTML = '<div class="flex items-center justify-center py-8"><div class="loading-spinner"></div></div>';
+
+    try {
+        const data = await apiGet('/api/bills');
+        document.getElementById('bills-paid-total').innerText = formatCurrency(data.totalPaid);
+        document.getElementById('bills-pending-total').innerText = formatCurrency(data.totalPending);
+
+        if (!data.bills || data.bills.length === 0) {
+            listEl.innerHTML = `<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 text-center">
+                <span class="material-symbols-outlined text-[48px] text-on-surface-variant/30 mb-2">receipt_long</span>
+                <p class="text-on-surface-variant font-label-md">لا توجد فواتير لهذا الشهر.</p>
+            </div>`;
+            return;
+        }
+
+        listEl.innerHTML = '';
+        data.bills.forEach((bill, index) => {
+            const statusColor = bill.is_paid ? 'text-primary' : bill.is_overdue ? 'text-error' : bill.is_due_soon ? 'text-error' : 'text-on-surface-variant';
+            const statusText = bill.is_paid ? 'مدفوعة ✓' : bill.is_overdue ? 'متأخرة!' : bill.is_due_soon ? `استحقاق خلال ${bill.days_left} أيام` : `يوم ${bill.due_day}`;
+            const cardBg = bill.is_paid ? 'bg-primary-container/5' : bill.is_overdue ? 'bg-error-container/10' : 'bg-surface-container-lowest';
+            const colorClass = bill.color_class || 'bg-secondary-container/50 text-on-secondary-container';
+
+            listEl.insertAdjacentHTML('beforeend', `
+            <div class="animate-fade-in-up expense-card ${cardBg} p-4 rounded-xl flex items-center justify-between group" style="animation-delay: ${0.05 * index}s;">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full ${colorClass} flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[20px]">${bill.icon || 'receipt'}</span>
+                    </div>
+                    <div>
+                        <h4 class="font-label-md text-label-md text-on-surface">${bill.title}</h4>
+                        <p class="font-label-sm text-label-sm ${statusColor}">${statusText}</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-end gap-2">
+                    <p class="font-label-md text-label-md text-on-surface">${formatCurrency(bill.amount)}</p>
+                    <div class="flex gap-1">
+                        <button onclick="toggleBillPaid(${bill.id})" class="px-3 py-1 rounded-lg text-[11px] font-medium transition-all active:scale-95 ${bill.is_paid ? 'bg-surface-container text-on-surface-variant hover:bg-error-container/20 hover:text-error' : 'bg-primary-container/10 text-primary-container hover:bg-primary-container/20'}">
+                            ${bill.is_paid ? 'إلغاء الدفع' : 'تأكيد الدفع'}
+                        </button>
+                        <button onclick="deleteBill(${bill.id})" class="p-1 text-error hover:bg-error-container/20 rounded-lg transition-all active:scale-95">
+                            <span class="material-symbols-outlined text-[16px]">delete</span>
+                        </button>
+                    </div>
+                </div>
+            </div>`);
+        });
+    } catch (e) {
+        listEl.innerHTML = '<p class="text-center text-error font-label-md py-4">تعذر تحميل الفواتير.</p>';
+    }
+}
+
+window.toggleBillPaid = async (billId) => {
+    try {
+        await apiPatch(`/api/bills/${billId}/toggle`);
+        showToast('تم تحديث حالة الفاتورة', 'success');
+        loadBills();
+    } catch (e) {
+        showToast('فشل التحديث', 'error');
+    }
+};
+
+window.deleteBill = async (billId) => {
+    if (!confirm('هل أنت متأكد من حذف هذه الفاتورة؟')) return;
+    try {
+        await apiDelete(`/api/bills/${billId}`);
+        showToast('تم حذف الفاتورة', 'info');
+        loadBills();
+    } catch (e) {
+        showToast('فشل الحذف', 'error');
+    }
+};
+
+const billIconMap = { 'سكن': 'home', 'كهرباء': 'bolt', 'ماء': 'water_drop', 'تقنية': 'wifi', 'نقل': 'directions_car', 'أخرى': 'receipt' };
+
+document.getElementById('bill-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const title = document.getElementById('bill-title-input').value.trim();
+    const amount = parseFloat(document.getElementById('bill-amount-input').value);
+    const due_day = parseInt(document.getElementById('bill-due-day-input').value);
+    const category = document.getElementById('bill-category-input').value;
+
+    if (!title || isNaN(amount) || amount <= 0) { showToast('الرجاء إدخال البيانات الصحيحة', 'error'); return; }
+    if (isNaN(due_day) || due_day < 1 || due_day > 31) { showToast('يوم الاستحقاق يجب أن يكون بين 1 و31', 'error'); return; }
+
+    const btn = document.getElementById('submit-bill-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<div class="loading-spinner mx-auto"></div>';
+
+    try {
+        await apiPost('/api/bills', {
+            title, amount, due_day, category,
+            icon: billIconMap[category] || 'receipt',
+            color_class: 'bg-secondary-container/50 text-on-secondary-container'
+        });
+        document.getElementById('bill-title-input').value = '';
+        document.getElementById('bill-amount-input').value = '';
+        document.getElementById('bill-due-day-input').value = '';
+        showToast(`تمت إضافة فاتورة "${title}" بنجاح`, 'success');
+        loadBills();
+    } catch (err) {
+        showToast('فشلت الإضافة: ' + err.message, 'error');
+    } finally {
+        btn.disabled = false;
+        btn.innerText = 'إضافة الفاتورة';
+    }
+});
+
+// =============================================
+//  BUDGETS VIEW
+// =============================================
+async function loadBudgets() {
+    const listEl = document.getElementById('budgets-list');
+    listEl.innerHTML = '<div class="flex items-center justify-center py-8"><div class="loading-spinner"></div></div>';
+
+    try {
+        const data = await apiGet('/api/budgets');
+
+        if (!data.budgets || data.budgets.length === 0) {
+            listEl.innerHTML = `<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 text-center">
+                <span class="material-symbols-outlined text-[48px] text-on-surface-variant/30 mb-2">pie_chart</span>
+                <p class="text-on-surface-variant font-label-md">لا توجد ميزانيات معرّفة لهذا الشهر.</p>
+            </div>`;
+            return;
+        }
+
+        listEl.innerHTML = '';
+        data.budgets.forEach((b, index) => {
+            const statusColors = {
+                ok: { bar: 'bg-primary-container', text: 'text-primary', bg: '' },
+                warning: { bar: 'bg-error/60', text: 'text-error', bg: 'bg-error-container/5' },
+                danger: { bar: 'bg-error', text: 'text-error font-semibold', bg: 'bg-error-container/10' },
+                exceeded: { bar: 'bg-error', text: 'text-error font-bold', bg: 'bg-error-container/20' }
+            };
+            const s = statusColors[b.status] || statusColors.ok;
+
+            listEl.insertAdjacentHTML('beforeend', `
+            <div class="animate-fade-in-up expense-card ${s.bg} bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 space-y-3" style="animation-delay: ${0.05 * index}s;">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <h4 class="font-label-md text-label-md text-on-surface font-semibold">${b.category}</h4>
+                        ${b.status === 'exceeded' ? '<span class="px-2 py-0.5 rounded-full bg-error text-on-error text-[10px]">تجاوز الحد!</span>' : ''}
+                        ${b.status === 'danger' ? '<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-[10px]">تحذير</span>' : ''}
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-label-sm text-label-sm ${s.text}">${b.percentage}%</span>
+                        <button onclick="deleteBudget(${b.id})" class="p-1 text-error hover:bg-error-container/20 rounded-lg transition-all active:scale-95">
+                            <span class="material-symbols-outlined text-[14px]">delete</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-full bg-surface-container rounded-full h-3 overflow-hidden">
+                    <div class="${s.bar} h-full rounded-full progress-fill" style="width: ${Math.min(100, b.percentage)}%"></div>
+                </div>
+                <div class="flex justify-between text-[12px] text-on-surface-variant">
+                    <span>المنفق: <span class="${s.text}">${formatCurrency(b.spent)}</span></span>
+                    <span>الحد: ${formatCurrency(b.limit_amount)}</span>
+                </div>
+            </div>`);
+        });
+    } catch (e) {
+        listEl.innerHTML = '<p class="text-center text-error font-label-md py-4">تعذر تحميل الميزانيات.</p>';
+    }
+}
+
+window.deleteBudget = async (id) => {
+    if (!confirm('هل أنت متأكد من حذف هذه الميزانية؟')) return;
+    try {
+        await apiDelete(`/api/budgets/${id}`);
+        showToast('تم حذف الميزانية', 'info');
+        loadBudgets();
+    } catch (e) {
+        showToast('فشل الحذف', 'error');
+    }
+};
+
+document.getElementById('budget-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const category = document.getElementById('budget-category-input').value;
+    const limit_amount = parseFloat(document.getElementById('budget-limit-input').value);
+
+    if (isNaN(limit_amount) || limit_amount <= 0) { showToast('الرجاء إدخال مبلغ صحيح', 'error'); return; }
+
+    const btn = document.getElementById('submit-budget-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<div class="loading-spinner mx-auto"></div>';
+
+    try {
+        await apiPost('/api/budgets', { category, limit_amount });
+        document.getElementById('budget-limit-input').value = '';
+        showToast(`تم تعيين ميزانية "${category}" بنجاح`, 'success');
+        loadBudgets();
+        loadHealthScore();
+    } catch (err) {
+        showToast('فشلت الإضافة: ' + err.message, 'error');
+    } finally {
+        btn.disabled = false;
+        btn.innerText = 'حفظ الميزانية';
+    }
+});
+
+// =============================================
+//  FINANCIAL HEALTH SCORE
+// =============================================
+async function loadHealthScore() {
+    const tipsEl = document.getElementById('health-tips');
+    tipsEl.innerHTML = '<div class="flex items-center justify-center py-2"><div class="loading-spinner"></div></div>';
+
+    try {
+        const data = await apiGet('/api/insights/health');
+        
+        // Update ring
+        const ring = document.getElementById('health-score-ring');
+        const scoreVal = document.getElementById('health-score-value');
+        const circumference = 2 * Math.PI * 42; // 263.9
+        const offset = circumference - (data.score / 100) * circumference;
+        
+        scoreVal.innerText = data.score;
+        setTimeout(() => { ring.style.strokeDashoffset = offset; }, 100);
+
+        // Color based on score
+        if (data.score >= 80) ring.style.stroke = 'rgba(var(--color-primary-container),1)';
+        else if (data.score >= 60) ring.style.stroke = '#f59e0b';
+        else ring.style.stroke = 'rgba(var(--color-error),1)';
+
+        // Render tips
+        const severityConfig = {
+            success: { bg: 'bg-primary-container/10', text: 'text-primary', icon: 'check_circle' },
+            warning: { bg: 'bg-error-container/20', text: 'text-error', icon: 'warning' },
+            danger: { bg: 'bg-error-container/30', text: 'text-error font-semibold', icon: 'error' },
+            info: { bg: 'bg-secondary-container/30', text: 'text-on-surface-variant', icon: 'info' }
+        };
+
+        if (!data.tips || data.tips.length === 0) {
+            tipsEl.innerHTML = '<p class="text-center text-on-surface-variant font-label-sm text-[12px]">لا توجد نصائح حالياً.</p>';
+        } else {
+            tipsEl.innerHTML = '';
+            data.tips.forEach(tip => {
+                const s = severityConfig[tip.severity] || severityConfig.info;
+                tipsEl.insertAdjacentHTML('beforeend', `
+                <div class="${s.bg} rounded-xl p-3 flex items-start gap-2">
+                    <span class="material-symbols-outlined text-[16px] ${s.text} flex-shrink-0 mt-0.5">${tip.icon || s.icon}</span>
+                    <p class="font-label-sm text-label-sm ${s.text} leading-relaxed">${tip.text}</p>
+                </div>`);
+            });
+        }
+    } catch (e) {
+        tipsEl.innerHTML = '<p class="text-center text-error font-label-sm py-2">تعذر تحميل درجة الصحة المالية.</p>';
+    }
+}
+
+// =============================================
+//  PROFILE PICTURE
+// =============================================
+const profileUploadEl = document.getElementById('profile-upload');
+const profileImgEl = document.getElementById('profile-img');
+
+if (profileUploadEl && profileImgEl) {
+    profileUploadEl.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const base64String = event.target.result;
+                profileImgEl.src = base64String;
+                localStorage.setItem('budget_profile_pic', base64String);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+    const saved = localStorage.getItem('budget_profile_pic');
+    if (saved) profileImgEl.src = saved;
+}
+
+// =============================================
+//  DARK MODE
+// =============================================
+const themeToggleBtn = document.getElementById('theme-toggle');
+const themeToggleIcon = document.getElementById('theme-toggle-icon');
+
+const applyTheme = (isDark) => {
+    if (isDark) {
+        document.documentElement.classList.add('dark');
+        if (themeToggleIcon) themeToggleIcon.textContent = 'light_mode';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+        if (themeToggleIcon) themeToggleIcon.textContent = 'dark_mode';
+        localStorage.setItem('theme', 'light');
+    }
+};
+
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+applyTheme(savedTheme === 'dark' || (!savedTheme && prefersDark));
+
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        applyTheme(!isDark);
+        addNotification(
+            !isDark ? 'تم تفعيل الوضع الداكن' : 'تم تفعيل الوضع الفاتح',
+            !isDark ? 'تم تغيير مظهر التطبيق إلى الوضع الداكن.' : 'تم تغيير مظهر التطبيق إلى الوضع الفاتح.',
+            'dark_mode', 'system'
+        );
+    });
+}
+
+// =============================================
+//  NOTIFICATIONS SYSTEM
+// =============================================
+let notifications = JSON.parse(localStorage.getItem('budget_notifications')) || [];
+
+const saveNotificationsToStorage = () => {
+    localStorage.setItem('budget_notifications', JSON.stringify(notifications));
+};
+
+const updateNotificationBadge = () => {
+    const badge = document.getElementById('notification-badge');
+    if (!badge) return;
+    const unread = notifications.filter(n => !n.read).length;
+    badge.classList.toggle('hidden', unread === 0);
+};
+
+const getNotificationIconColor = (type) => {
+    switch(type) {
+        case 'income': return 'bg-primary-container/20 text-primary';
+        case 'expense': return 'bg-error-container/20 text-error';
+        case 'savings': return 'bg-tertiary-container/20 text-tertiary';
+        default: return 'bg-secondary-container/50 text-on-surface-variant';
+    }
+};
+
+const getNotificationIcon = (type) => {
+    switch(type) {
+        case 'income': return 'payments';
+        case 'expense': return 'shopping_cart';
+        case 'savings': return 'savings';
+        default: return 'info';
+    }
+};
+
+const renderNotifications = () => {
+    const container = document.getElementById('notifications-list-container');
+    if (!container) return;
+    if (notifications.length === 0) {
+        container.innerHTML = `<div class="flex flex-col items-center justify-center p-8 gap-3">
+            <span class="material-symbols-outlined text-[48px] text-on-surface-variant/30">notifications_off</span>
+            <p class="text-on-surface-variant text-[13px] font-label-md text-center">لا توجد إشعارات حالياً</p>
+        </div>`;
+        return;
+    }
+    container.innerHTML = notifications.slice().reverse().map(n => {
+        const iconBg = getNotificationIconColor(n.type);
+        const icon = getNotificationIcon(n.type);
+        const timeAgo = new Date(n.timestamp).toLocaleString('ar-DZ', { hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'short' });
+        const unreadDot = !n.read ? '<span class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></span>' : '<span class="w-2 h-2 flex-shrink-0"></span>';
+        return `<div class="flex items-start gap-3 p-3.5 hover:bg-primary-container/5 transition-colors cursor-default ${!n.read ? 'bg-primary-container/5' : ''}">
+            <div class="w-9 h-9 rounded-full ${iconBg} flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="material-symbols-outlined text-[18px]">${icon}</span>
+            </div>
+            <div class="flex-1 min-w-0">
+                <p class="text-on-surface font-medium text-[13px] leading-tight">${n.title}</p>
+                <p class="text-on-surface-variant text-[11px] mt-0.5 leading-relaxed">${n.message}</p>
+                <p class="text-outline text-[10px] mt-1">${timeAgo}</p>
+            </div>
+            ${unreadDot}
+        </div>`;
+    }).join('');
+};
+
+const addNotification = (title, message, icon, type) => {
+    const newNotif = { id: Date.now(), title, message, icon: icon || 'notifications', type: type || 'system', read: false, timestamp: new Date().toISOString() };
+    notifications.push(newNotif);
+    if (notifications.length > 20) notifications.shift();
+    saveNotificationsToStorage();
+    updateNotificationBadge();
+    renderNotifications();
+};
+
+const markAllAsRead = () => {
+    notifications.forEach(n => n.read = true);
+    saveNotificationsToStorage();
+    updateNotificationBadge();
+};
+
+const notificationsBtn = document.getElementById('notifications-btn');
+const notificationsDropdown = document.getElementById('notifications-dropdown');
+
+if (notificationsBtn && notificationsDropdown) {
+    notificationsBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = notificationsDropdown.classList.contains('hidden');
+        notificationsDropdown.classList.toggle('hidden');
+        if (isHidden) { markAllAsRead(); renderNotifications(); }
+    });
+    document.addEventListener('click', (e) => {
+        if (!notificationsDropdown.contains(e.target) && e.target !== notificationsBtn) {
+            notificationsDropdown.classList.add('hidden');
+        }
+    });
+}
+
+document.getElementById('clear-notifications')?.addEventListener('click', () => {
+    notifications = [];
+    saveNotificationsToStorage();
+    updateNotificationBadge();
+    renderNotifications();
+    showToast('تم مسح جميع الإشعارات', 'info');
+});
+
+// =============================================
+//  TOAST NOTIFICATION SYSTEM
+// =============================================
+const showToast = (message, type = 'success') => {
+    let toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.id = 'toast-container';
+        toastContainer.className = 'fixed top-20 left-1/2 -translate-x-1/2 z-[100] flex flex-col gap-2 items-center pointer-events-none';
+        document.body.appendChild(toastContainer);
+    }
+    const icons = { success: 'check_circle', error: 'error', info: 'info', warning: 'warning' };
+    const colors = {
+        success: 'bg-primary-container text-on-primary-container border-primary-container/50',
+        error: 'bg-error-container text-on-error-container border-error/30',
+        info: 'bg-surface-container text-on-surface border-outline-variant/30',
+        warning: 'bg-error-container/50 text-on-surface border-error/20'
+    };
+    const toast = document.createElement('div');
+    toast.className = `flex items-center gap-2.5 px-4 py-3 rounded-xl border shadow-lg text-[14px] font-medium pointer-events-auto ${colors[type]} backdrop-blur-md`;
+    toast.style.cssText = 'animation: slideInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(-20px);';
+    toast.innerHTML = `<span class="material-symbols-outlined text-[18px]">${icons[type]}</span><span>${message}</span>`;
+
+    if (!document.getElementById('toast-keyframes')) {
+        const style = document.createElement('style');
+        style.id = 'toast-keyframes';
+        style.textContent = `
+            @keyframes slideInDown { to { opacity: 1; transform: translateY(0); } }
+            @keyframes slideOutUp { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-20px); } }
+        `;
+        document.head.appendChild(style);
+    }
+
+    toastContainer.appendChild(toast);
+    setTimeout(() => {
+        toast.style.animation = 'slideOutUp 0.3s ease forwards';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+};
+
+// =============================================
+//  INIT
+// =============================================
+document.addEventListener('DOMContentLoaded', () => {
+    updateNotificationBadge();
+    renderNotifications();
+    loadSummary();
+    loadRecentTransactions();
+});
+
+updateNotificationBadge();
+renderNotifications();
+</script>
+</body></html>
